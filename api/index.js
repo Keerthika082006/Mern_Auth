@@ -1,6 +1,6 @@
 import express from "express";
 const app = express();
-app.disable("x-powered-by");
+//app.disable("x-powered-by");//// SonarCloud security fix
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
