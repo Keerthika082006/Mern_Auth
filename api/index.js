@@ -1,10 +1,15 @@
 import express from "express";
 const app = express();
+app.use(express.json());
 app.disable("x-powered-by");// SonarCloud security fix
+
 import userRoutes from "./routes/user.router.js";
+import authRoutes from "./routes/auth.route.js";
+
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
+
 
 mongoose.connect(process.env.MONGO).then(()=>{
     console.log("Connected to MongoDB");
@@ -19,3 +24,4 @@ app.listen(3000,()=>{
 })
 
 app.use("/api/user",userRoutes);
+app.use("/api/auth",authRoutes);
